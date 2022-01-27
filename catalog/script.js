@@ -20,7 +20,6 @@ function salary_more_than_150k (){
 }
 module.exports.salary_more_than_150k = salary_more_than_150k
 
-
 function over_30_years_old (){
     let data = []
     console.log("----------------------------------------------------------------------")
