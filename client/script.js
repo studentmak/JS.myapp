@@ -1,9 +1,8 @@
 
 
-const button = document.body.querySelector('#postUser')
-
+const button = document.body.querySelector('#postFT')
 button.onclick = () => {
-    const promise = fetch('/postUser')
+    const promise = fetch('/postFT')
     promise.then((resp) => {
         const promise2 = resp.text()
         promise2.then((data) => {
@@ -12,7 +11,6 @@ button.onclick = () => {
 })
 }
 const button1 = document.body.querySelector('#postCPD')
-
 button1.onclick = () => {
     const promise = fetch('/postCPD') 
     promise.then((resp) => {
@@ -64,4 +62,26 @@ button5.onclick = () => {
             console.log(data)
         })       
 })
+}
+
+const button6 = document.body.querySelector('#post_users')
+button6.onclick = () => {
+    const promise = fetch('/post_users')
+    promise.then((resp) => {
+        const promise2 = resp.text()
+        promise2.then((data) => {
+            console.log(data)
+        })
+    })
+}
+
+const button7 = document.body.querySelector('#postpermissions')
+button7.onclick = () => {
+    const promise = fetch('/postpermissions')
+    promise.then((resp) =>{
+        const promise2 = resp.text()
+        promise2.then((data) =>{
+            console.log(data)
+        })
+    })
 }

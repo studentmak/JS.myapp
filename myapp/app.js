@@ -12,7 +12,7 @@ const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users} 
 
 app.use('/', express.static('./client'))
 
-app.get('/postUser', (req, res) => {
+app.get('/postFT', (req, res) => {
     res.send(post_FT().join('; '))
 })
 
@@ -36,6 +36,13 @@ app.get('/salary150k', (req, res)=> {
     res.send(salary_more_than_150k().join('; '))
 })
 
+app.get('/post_users', (req, res) => {
+    res.send(post_users)
+})
+
+app.get('/postpermissions', (req, res) => {
+    res.send(postpermissions)
+})
 
 
 
