@@ -86,3 +86,22 @@ button7.onclick = () => {
     })
 }
 
+function color_background () {
+    let result = confirm("Изменить цвет фона страницы?")
+    if (result == true){
+        let color = prompt('Напишите название цвета на английском!')
+        let resulttimecolor = confirm('Задать таймер возврата фона в исходное состояние?')
+        if (resulttimecolor == true) {
+        let timecolor = prompt('Время в миллисекундах')
+        document.body.style.background = color;
+        setTimeout(() => document.body.style.background = "", Number(timecolor)*1000)
+        } else if (resulttimecolor == false) {
+        document.body.style.background = color;
+        }
+    }
+}
+
+const button8 = document.body.querySelector('#color_background')
+button8.onclick = () => {
+    color_background()
+}

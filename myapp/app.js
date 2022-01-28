@@ -10,6 +10,7 @@ const {postpermissions} = require('../catalog/postpermissions.js')
 const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users, color_background} = require('../catalog/script.js')
 
 
+
 app.use('/', express.static('./client'))
 
 app.get('/postFT', (req, res) => {
@@ -44,7 +45,9 @@ app.get('/postpermissions', (req, res) => {
     res.send(postpermissions)
 })
 
-
+app.get('/color_background', (req, res) => {
+    res.send(color_background)
+})
 
 
 
