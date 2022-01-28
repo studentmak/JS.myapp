@@ -92,7 +92,7 @@ function color_background () {
         let color = prompt('Напишите название цвета на английском!')
         let resulttimecolor = confirm('Задать таймер возврата фона в исходное состояние?')
         if (resulttimecolor == true) {
-        let timecolor = prompt('Время в миллисекундах')
+        let timecolor = prompt('Время в секундах')
         document.body.style.background = color;
         setTimeout(() => document.body.style.background = "", Number(timecolor)*1000)
         } else if (resulttimecolor == false) {

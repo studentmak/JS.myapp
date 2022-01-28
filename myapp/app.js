@@ -14,11 +14,11 @@ const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users, 
 app.use('/', express.static('./client'))
 
 app.get('/postFT', (req, res) => {
-    res.send(post_FT().join('; '))
+    res.send(post_FT())
 })
 
 app.get('/postCPD', (req, res) => {
-    res.send(post_CPD().join('; '))
+    res.send(post_CPD())
 })
 
 app.get('/users', (req, res) => {
@@ -26,7 +26,7 @@ app.get('/users', (req, res) => {
 })
 
 app.get('/age30', (req, res) => {
-    res.send(over_30_years_old().join('; '))
+    res.send(over_30_years_old())
 })
 
 app.get('/permissions', (req, res) => {
@@ -34,7 +34,7 @@ app.get('/permissions', (req, res) => {
 })
 
 app.get('/salary150k', (req, res)=> {
-    res.send(salary_more_than_150k().join('; '))
+    res.send(salary_more_than_150k())
 })
 
 app.get('/post_users', (req, res) => {
