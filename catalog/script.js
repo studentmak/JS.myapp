@@ -5,7 +5,7 @@ let {post_users} = require('./post_users.js')
 let {postpermissions} = require('./postpermissions.js')
 
 let {users} = require('./users.js');
-const { text } = require('express');
+
 
 function salary_more_than_150k (){
     let data = [];
@@ -59,4 +59,6 @@ function post_CPD () {
     return data
 }
 module.exports.post_CPD = post_CPD
+
+
 

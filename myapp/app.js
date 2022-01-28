@@ -7,7 +7,7 @@ const {users} = require('../catalog/users.js')
 const {permissions} = require('../catalog/permissions.js')
 const {post_users} = require('../catalog/post_users.js')
 const {postpermissions} = require('../catalog/postpermissions.js')
-const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users} = require('../catalog/script.js')
+const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users, color_background} = require('../catalog/script.js')
 
 
 app.use('/', express.static('./client'))
@@ -43,6 +43,7 @@ app.get('/post_users', (req, res) => {
 app.get('/postpermissions', (req, res) => {
     res.send(postpermissions)
 })
+
 
 
 
