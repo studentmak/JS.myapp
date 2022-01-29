@@ -2,7 +2,7 @@
 
 const http = require('http');
 const {salary_more_than_150k, over_30_years_old, post_FT, post_CPD} = require('./catalog/script2.js');
-const {users} = require('./catalog/users.js');
+const {users} = require('../catalog/users.js');
 
 let server = http.createServer(function(request, response) {
     let salaryData = salary_more_than_150k();
