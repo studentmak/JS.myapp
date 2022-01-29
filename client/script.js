@@ -86,6 +86,9 @@ button7.onclick = () => {
     })
 }
 
+
+
+const button8 = document.body.querySelector('#color_background')
 function color_background () {
     let result = confirm("Изменить цвет фона страницы?")
     if (result == true){
@@ -101,7 +104,6 @@ function color_background () {
     }
 }
 
-const button8 = document.body.querySelector('#color_background')
 button8.onclick = () => {
     color_background()
 }
