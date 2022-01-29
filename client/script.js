@@ -102,8 +102,6 @@ function color_background () {
         document.body.style.background = color;
         }
     }
-}
-
-button8.onclick = () => {
+} button8.onclick = () => {
     color_background()
 }
