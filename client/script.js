@@ -24,12 +24,24 @@ const button2 = document.body.querySelector('#users')
 button2.onclick = () => {
     const promise = fetch('/users') 
     promise.then((resp) => {
-        const promise2 = resp.text()
+        const promise2 = resp.json()
         promise2.then((data) => {
             console.log(data)
+            drawUsersTable(data)
         })       
 })
 }
+function drawUsersTable(data) {
+    let usersTableElement = document.querySelector('#usersTable')
+  
+  for (let i = 0; i < data.length; i++){
+    let h1Element = document.createElement ('h1')
+  h1Element.textContent = data[i].name
+  usersTableElement.appendChild(h1Element)
+  }
+    console.log(data)
+}
+
 
 const button3 = document.body.querySelector('#permissions')
 button3.onclick = () => {
