@@ -36,7 +36,7 @@ function drawUsersTable(data) {
   
   for (let i = 0; i < data.length; i++){
     let h1Element = document.createElement ('h1')
-  h1Element.textContent = data[i].name
+  h1Element.textContent = (`${data[i].name} ${data[i].age}`)
   usersTableElement.appendChild(h1Element)
   }
     console.log(data)
