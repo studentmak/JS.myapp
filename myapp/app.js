@@ -9,6 +9,7 @@ const {post_users} = require('../catalog/post_users.js')
 const {postpermissions} = require('../catalog/postpermissions.js')
 const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users, color_background} = require('../catalog/script.js')
 const { Client } = require('pg')
+const { seedUsers } = require('../seeds/users.js')
 
 const client = new Client({
     user: 'postgres',
@@ -18,62 +19,14 @@ const client = new Client({
     port: 5432,
   })
   client.connect().then(() => {
- 
- 
-    dropTable(() => {
-        createTable(() => {
-            insertUsers()
-        })
-    })
+      seedUsers(client)
 })
 
   
-function insertUsers(callback) {
-    for (let i = 0; i < users.length; i++) {
-        insertUser(users[i].name, users[i].age, callback)
-        
-    }
-}
+  
 
-  function  dropTable(callback){
-    return client.query('DROP TABLE IF EXISTS users', (err, res) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log("users deleted table  successfully")
-            if (callback){
-            callback()
-            }
-        
-        }
-    })
-}
-   function createTable(callback) {
-    client.query('CREATE TABLE users(name VARCHAR, age INTEGER)', (err, res) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log("users create table successfully")
-            if (callback){
-            callback()
-            }
-        }
-    })
-    
-   }
 
-   function insertUser(name, age, callback) {
-    client.query('INSERT INTO users VALUES($1, $2)', [name, age],  (err, res) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log("User inserted successfully")
-            if (callback){
-            callback()}
-        }
-    })
-   }
-    
+
 app.use('/', express.static('./client'))
 
 app.get('/postFT', (req, res) => {
@@ -94,8 +47,6 @@ app.get('/users', (req, res) => {
     })
 })
     
-
-
 app.get('/age30', (req, res) => {
     res.send(over_30_years_old())
 })
