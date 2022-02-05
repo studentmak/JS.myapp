@@ -10,6 +10,8 @@ const {postpermissions} = require('../catalog/postpermissions.js')
 const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users, color_background} = require('../catalog/script.js')
 const { Client } = require('pg')
 const { seedUsers } = require('../seeds/users.js')
+const { seedPermissions } = require('../seeds/permissions.js')
+
 
 const client = new Client({
     user: 'postgres',
@@ -20,11 +22,11 @@ const client = new Client({
   })
   client.connect().then(() => {
       seedUsers(client)
+      seedPermissions(client)
 })
 
   
   
-
 
 
 app.use('/', express.static('./client'))
@@ -52,7 +54,13 @@ app.get('/age30', (req, res) => {
 })
 
 app.get('/permissions', (req, res) => {
-    res.send(permissions)
+    client.query('SELECT * FROM permissions', (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send(result.rows)
+        }
+    })
 })
 
 app.get('/salary150k', (req, res)=> {

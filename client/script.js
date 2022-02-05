@@ -47,11 +47,22 @@ const button3 = document.body.querySelector('#permissions')
 button3.onclick = () => {
     const promise = fetch('/permissions') 
     promise.then((resp) => {
-        const promise2 = resp.text()
+        const promise2 = resp.json()
         promise2.then((data) => {
             console.log(data)
+            drawpermissionsTable(data)
         })       
 })
+}
+function drawpermissionsTable(data) {
+    let permissionsTableElement = document.querySelector('#permissionsTable')
+
+   for (let i = 0; i < data.length; i++){
+    let h1element = document.createElement ('h1')
+    h1element.textContent = (`${data[i].name}`)
+        permissionsTableElement.appendChild(h1element)
+   }
+   console.log(data)
 }
 
 const button4 = document.body.querySelector('#age30')

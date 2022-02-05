@@ -18,7 +18,7 @@ function insertUsers(callback) {
         if (err) {
             console.log(err)
         } else {
-            console.log("users deleted table  successfully")
+            console.log("users table deleted successfully")
             if (callback){
             callback()
             }
@@ -26,12 +26,13 @@ function insertUsers(callback) {
         }
     })
 }
+
    function createTable(callback) {
     client.query('CREATE TABLE users(name VARCHAR, age INTEGER)', (err, res) => {
         if (err) {
             console.log(err)
         } else {
-            console.log("users create table successfully")
+            console.log("users the table was created successfully")
             if (callback){
             callback()
             }
@@ -50,6 +51,7 @@ function insertUsers(callback) {
         }
     })
    }
+   
 let client
    module.exports.seedUsers =  function(c){
        client = c
