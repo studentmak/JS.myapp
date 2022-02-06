@@ -9,9 +9,10 @@ const {post_users} = require('../catalog/post_users.js')
 const {postpermissions} = require('../catalog/postpermissions.js')
 const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users, color_background} = require('../catalog/script.js')
 const { Client } = require('pg')
-const { seedUsers } = require('../seeds/users.js')
+const { seedUsers, insertUser } = require('../seeds/users.js')
 const { seedPermissions } = require('../seeds/permissions.js')
 const { seedPost_users } = require('../seeds/post_users.js')
+const bodyParser = require('body-parser')
 
 
 const client = new Client({
@@ -22,15 +23,17 @@ const client = new Client({
     port: 5432,
   })
   client.connect().then(() => {
-      seedUsers(client)
-      seedPermissions(client)
-      seedPost_users(client)
+    seedPermissions(client)  
+    seedPost_users(client)
+    seedUsers(client)
+      
+      
 })
 
   
   
 
-
+app.use(bodyParser.json());
 app.use('/', express.static('./client'))
 
 app.get('/postFT', (req, res) => {
@@ -87,7 +90,11 @@ app.get('/color_background', (req, res) => {
     res.send(color_background)
 })
 
-
+app.post('/user', (req, res) =>{
+    
+    insertUser(req.body.name, req.body.age)
+    res.send()
+})
 
 
 

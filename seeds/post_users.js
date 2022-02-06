@@ -1,11 +1,12 @@
 
+const { postpermissions } = require('../catalog/postpermissions.js')
 const {post_users} = require('../catalog/post_users.js')
 
 
 
 function insertPost_usersTable(callback) {
     for (let prop in post_users){
-        insertTable(prop, null, null, callback)
+        insertTable(prop, callback)
     }
 }
 
@@ -25,7 +26,7 @@ function dropTable(callback) {
     }
 
     function createTable(callback) {
-        return client.query('CREATE TABLE roles(name VARCHAR, id INTEGER, permission INTEGER)', (err, res) => {
+        return client.query('CREATE TABLE roles(name VARCHAR, id SERIAL, permission INTEGER)', (err, res) => {
            if (err){
                console.log(err)
            } else {
@@ -37,8 +38,14 @@ function dropTable(callback) {
         })
     }
 
-    function insertTable(id, name, permission, callback) {
-        return client.query('INSERT INTO roles VALUES($1, $2, $3)', [id, name, permission], (err, res) => {
+    function insertTable(name, permission, callback) {
+        client.query('SELECT * FROM permissions WHERE name in ($1)', [postpermissions[name]], function(err, res) {
+            if (err) {
+                console.log(err)
+            }
+
+        })
+        return client.query('INSERT INTO roles (name, permission) VALUES($1, $2)', [name, permission], (err, res) => {
             if (err){
                 console.log(err)
             } else {

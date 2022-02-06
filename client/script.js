@@ -91,12 +91,15 @@ const button6 = document.body.querySelector('#post_users')
 button6.onclick = () => {
     const promise = fetch('/post_users')
     promise.then((resp) => {
-        const promise2 = resp.text()
+        const promise2 = resp.json()
         promise2.then((data) => {
             console.log(data)
+            
         })
     })
 }
+
+
 
 const button7 = document.body.querySelector('#postpermissions')
 button7.onclick = () => {
@@ -127,4 +130,24 @@ function color_background () {
     }
 } button8.onclick = () => {
     color_background()
+}
+
+
+let newUserBtn = document.querySelector('#new-User-Btn')
+
+newUserBtn.onclick = (e) => {
+    e.preventDefault()
+    let promise = fetch(
+        '/user',
+        {
+            method: 'POST',
+            body: JSON.stringify({
+                name: document.querySelector('#name-field').value,
+                age: document.querySelector('#age-field').value
+            }),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }
+    )
 }

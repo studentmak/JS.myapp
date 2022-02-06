@@ -51,6 +51,7 @@ function insertUsers(callback) {
         }
     })
    }
+module.exports.insertUser = insertUser
 
 let client
    module.exports.seedUsers =  function(c){

@@ -23,7 +23,7 @@ function dropTable(callback) {
 }
 
 function createTable(callback) {
-    return client.query('CREATE TABLE permissions (name VARCHAR, id INTEGER, role INTEGER)', (err, res) => {
+    return client.query('CREATE TABLE permissions (name VARCHAR, id SERIAL)', (err, res) => {
         if (err){
             console.log(err)
         } else {
@@ -35,8 +35,8 @@ function createTable(callback) {
     })
 }
 
-function insertPermission(name, id, role, callback) {
-    return client.query('INSERT INTO permissions VALUES($1, $2, $3)', [name, id, role], (err, res) => {
+function insertPermission(name, id, callback) {
+    return client.query('INSERT INTO permissions VALUES($1)', [name], (err, res) => {
         if (err) {
             console.log(err)
         } else {
