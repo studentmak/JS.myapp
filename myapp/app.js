@@ -11,6 +11,7 @@ const {post_FT, post_CPD, over_30_years_old, salary_more_than_150k, list_users, 
 const { Client } = require('pg')
 const { seedUsers } = require('../seeds/users.js')
 const { seedPermissions } = require('../seeds/permissions.js')
+const { seedPost_users } = require('../seeds/post_users.js')
 
 
 const client = new Client({
@@ -23,6 +24,7 @@ const client = new Client({
   client.connect().then(() => {
       seedUsers(client)
       seedPermissions(client)
+      seedPost_users(client)
 })
 
   
@@ -68,7 +70,13 @@ app.get('/salary150k', (req, res)=> {
 })
 
 app.get('/post_users', (req, res) => {
-    res.send(post_users)
+    client.query('SELECT * FROM role', (err, result) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.send(result.rows)
+        }
+    })
 })
 
 app.get('/postpermissions', (req, res) => {

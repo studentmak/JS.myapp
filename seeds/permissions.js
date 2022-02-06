@@ -40,7 +40,7 @@ function insertPermission(name, id, role, callback) {
         if (err) {
             console.log(err)
         } else {
-            console.log('Permission inserted successfully')
+            console.log('The values were added to the permissions table successfully')
          if (callback) {
             callback()
         }
@@ -56,6 +56,4 @@ module.exports.seedPermissions = function(c) {
             insertPermissions()
         })
     })
-
-    
 }

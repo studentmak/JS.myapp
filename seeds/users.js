@@ -45,13 +45,13 @@ function insertUsers(callback) {
         if (err) {
             console.log(err)
         } else {
-            console.log("User inserted successfully")
+            console.log("The values were added to the users table successfully")
             if (callback){
             callback()}
         }
     })
    }
-   
+
 let client
    module.exports.seedUsers =  function(c){
        client = c
