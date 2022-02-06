@@ -42,7 +42,7 @@ function dropTable(callback) {
             if (err){
                 console.log(err)
             } else {
-                console.log("The values were added to the role table successfully")
+                console.log("The values were added to the (role) table successfully")
                 if (callback) {
                     callback()
                 }

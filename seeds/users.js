@@ -45,7 +45,7 @@ function insertUsers(callback) {
         if (err) {
             console.log(err)
         } else {
-            console.log("The values were added to the users table successfully")
+            console.log("The values were added to the (users) table successfully")
             if (callback){
             callback()}
         }

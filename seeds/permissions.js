@@ -40,7 +40,7 @@ function insertPermission(name, id, role, callback) {
         if (err) {
             console.log(err)
         } else {
-            console.log('The values were added to the permissions table successfully')
+            console.log('The values were added to the (permissions) table successfully')
          if (callback) {
             callback()
         }
